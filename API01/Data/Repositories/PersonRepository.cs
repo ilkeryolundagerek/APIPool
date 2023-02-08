@@ -1,5 +1,7 @@
 ﻿using API01.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using Toolbox;
 using Toolbox.DataTools;
 
 namespace API01.Data.Repositories
@@ -12,6 +14,18 @@ namespace API01.Data.Repositories
     {
         public PersonRepository(DbContext context) : base(context)
         {
+        }
+
+        public override IEnumerable<Person> ReadMany(Expression<Func<Person, bool>>? expression = null)
+        {
+            var data = expression != null ? _set.Where(expression) : _set;
+            return data.Include(x => x.Department).Include(x => x.Addresses);
+        }
+
+        public override Paging<Person> ReadManyWithPaging(int page, int page_size, Expression<Func<Person, bool>>? expression = null)
+        {
+            var data = expression != null ? _set.Where(expression) : _set;
+            return new Paging<Person>(data.Include(x => x.Department).Include(x => x.Addresses), page, page_size);
         }
     }
 

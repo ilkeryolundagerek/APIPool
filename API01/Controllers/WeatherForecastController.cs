@@ -32,9 +32,9 @@ namespace API01.Controllers
         }
 
         //Http protokolü olmadığı için swagger listesinden gelmedi.
-        public void GetRead()
-        {
+        //public void GetRead()
+        //{
 
-        }
+        //}
     }
 }
