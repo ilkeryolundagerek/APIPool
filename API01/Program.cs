@@ -1,5 +1,6 @@
 ﻿using API01.Data;
 using API01.Data.Repositories;
+using API01.Services;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<DataContext>(o => o.UseSqlServer(builder.Configura
 //builder.Services.AddScoped<IAddressRepository,AddressRepository>();
 //builder.Services.AddScoped<IDepartmentRepository,DepartmentRepository>();
 builder.Services.AddScoped<IUnitOfWorkData, UnitOfWorkData>();
+builder.Services.AddScoped<IResponseService, ResponseService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

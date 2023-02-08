@@ -18,14 +18,15 @@ namespace API01.Data.Repositories
 
         public override IEnumerable<Person> ReadMany(Expression<Func<Person, bool>>? expression = null)
         {
-            var data = expression != null ? _set.Where(expression) : _set;
-            return data.Include(x => x.Department).Include(x => x.Addresses);
+            var data = _set.Include(x => x.Department).Include(x => x.Addresses);
+            return expression != null ? data.Where(expression) : data;
         }
 
         public override Paging<Person> ReadManyWithPaging(int page, int page_size, Expression<Func<Person, bool>>? expression = null)
         {
-            var data = expression != null ? _set.Where(expression) : _set;
-            return new Paging<Person>(data.Include(x => x.Department).Include(x => x.Addresses), page, page_size);
+            var included = _set.Include(x => x.Department).Include(x => x.Addresses);
+            var data = expression != null ? included.Where(expression) : included;
+            return new Paging<Person>(data, page, page_size);
         }
     }
 

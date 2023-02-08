@@ -1,5 +1,7 @@
 ﻿using API01.Data.Repositories;
 using API01.Entities;
+using API01.Models.Responses;
+using API01.Services;
 using Microsoft.AspNetCore.Mvc;
 using Toolbox;
 
@@ -12,20 +14,22 @@ namespace API01.Controllers
     public class ValuesController : ControllerBase
     {
         private IUnitOfWorkData _uow;
-
-        public ValuesController(IUnitOfWorkData uow)
+        private IResponseService _service;
+        public ValuesController(IUnitOfWorkData uow, IResponseService service)
         {
             _uow=uow;
+            _service=service;
         }
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public Paging<Person> Get(int page = 1, int page_size = 20)
+        public Paging<PeopleResponseModel> Get(int page = 1, int page_size = 20)
         {
             //var data = _uow.personRepository.ReadMany(x => x.DepartmentId==25);
             //return new Paging<Person>(data, page, page_size);
-            var data = _uow.personRepository.ReadManyWithPaging(page, page_size);
-            return data;
+            //var data = _uow.personRepository.ReadManyWithPaging(page, page_size);
+            //return data;
+            return _service.GetPeopleWithPaging(page, page_size);
         }
 
         // GET api/<ValuesController>/5

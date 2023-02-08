@@ -15,7 +15,6 @@ namespace API01.Entities
         public string? Suffix;
         public string Email;
         public int DepartmentId;
-
         public Department Department;
         public ICollection<Address> Addresses;//Db tarafına gönderilmeyen yapılardır. Çünkü nense yapısının sütunu oluşmaz.
 
