@@ -13,6 +13,19 @@ namespace API04.Models
         public string picture;
     }
 
+    public class UserCreate
+    {
+        public string firstName;
+        public string lastName;
+        public string email;
+    }
+
+    public class UserUpdate
+    {
+        public string firstName;
+        public string lastName;
+    }
+
     public class UserList
     {
         public UserPreview[] data;
