@@ -2,6 +2,7 @@
 using API01.Entities;
 using API01.Models.Responses;
 using API01.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Toolbox;
 
@@ -9,6 +10,7 @@ using Toolbox;
 
 namespace API01.Controllers
 {
+    [EnableCors("MyCors")]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -22,6 +24,7 @@ namespace API01.Controllers
         }
 
         // GET: api/<ValuesController>
+        [EnableCors("Values")]
         [HttpGet]
         public Paging<PeopleResponseModel> Get(int page = 1, int page_size = 20)
         {
