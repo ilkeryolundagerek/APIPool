@@ -1,0 +1,70 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamPathTemplate": "/gates/north/values",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "FileCacheOptions": { "TtlSeconds": 10 },
+      "Priority": 0
+    },
+    {
+      "DownstreamPathTemplate": "/{path}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamPathTemplate": "/computer/{path}",
+      "Priority": 4
+    },
+    {
+      "DownstreamPathTemplate": "/api/{path}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reqres.in",
+          "Port": 443
+        }
+      ],
+      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamPathTemplate": "/reqres/{path}",
+      "Priority": 5
+    },
+    {
+      "DownstreamPathTemplate": "/data/v1/{endpoint}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dummyapi.io",
+          "Port": 443
+        }
+      ],
+      "UpstreamHeaderTransform": {
+        /*DummyAPI yapısının talep ettiği app-id*/
+        "app-id": "63e4a40e7d733b0ef5fdea65"
+      },
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamPathTemplate": "/dummy/{endpoint}",
+      "Priority": 6
+    }
+  ]
+}

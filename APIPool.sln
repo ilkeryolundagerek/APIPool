@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API04", "API04\API04.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICompute", "APICompute\APICompute.csproj", "{678C83C9-A913-40C9-9280-3AE2A62E08C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{49B8C770-EF85-4302-9BEC-0C10E36756B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{678C83C9-A913-40C9-9280-3AE2A62E08C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678C83C9-A913-40C9-9280-3AE2A62E08C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678C83C9-A913-40C9-9280-3AE2A62E08C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B8C770-EF85-4302-9BEC-0C10E36756B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B8C770-EF85-4302-9BEC-0C10E36756B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B8C770-EF85-4302-9BEC-0C10E36756B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B8C770-EF85-4302-9BEC-0C10E36756B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
